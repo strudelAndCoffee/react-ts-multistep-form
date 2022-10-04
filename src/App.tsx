@@ -36,7 +36,7 @@ function App() {
       return { ...prev, ...fields }
     })
   }
-  
+
   const {
     steps,
     currentStepIndex,
@@ -53,7 +53,8 @@ function App() {
 
   function onSubmit(e: FormEvent) {
     e.preventDefault()
-    next
+    if (!isLastStep) return next()
+    alert ("Account created successfully!")
   }
 
   return (
@@ -65,7 +66,8 @@ function App() {
         padding: '2rem',
         margin: '1rem',
         borderRadius: '.5rem',
-        fontFamily: 'Arial'
+        fontFamily: 'Arial',
+        maxWidth: 'max-content'
       }}
     >
       <form onSubmit={onSubmit}>
